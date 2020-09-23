@@ -7,6 +7,18 @@ Root exudation is pivotal for plants to cope with the changing environment throu
 ## Overview
 
 **16 S rRNA data analysis consists of various steps which are as follows:**
+*Using 2 x 300 bp V4 region from the MiSeq platform as the example*
+
+1. Quality filteration in USEARCH (version: 10.0.240) with the UPARSE pipeline. Primers and low quality reads are removed.
+2. Dereplication in USEARCH. To find the unique sequences and create the input sequences of the 97% OTU clustering.
+3. OTU clustering in USEARCH. 97% identity was used as the threshold.
+4. Generation of OTU table in USEARCH.
+5. Taxonomy assignment. Using the Ribosomal Database Project classifier (RDP) in QIIME's embeded python commands.
+6. Removal of plastid and mitochondria in the OTU table by using the QIIME's embeded python commands.
+7. alpha-diversity analysis using the QIIME's embeded python commands.
+8. beta-diversity analysis (PCoA analysis with Bray-Curtis dissimilarity matrix) using the QIIME's embeded python commands.
+9. Canonical Analysis of Principal coordinates (CAP) analysis. Using the *vegan* package in R and including the PERMONOVA analysis.
+10. Co-occurrence networks analysis. Using the *SparCC* python command lines and *igraph* package in R. 
 
 ```
 cd 
