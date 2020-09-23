@@ -7,6 +7,7 @@ Root exudation is pivotal for plants to cope with the changing environment throu
 ## Overview
 
 **16 S rRNA data analysis consists of various steps which are as follows:**
+
 *Using 2 x 300 bp V4 region from the MiSeq platform as the example*
 
 1. Quality filteration in USEARCH (version: 10.0.240) with the UPARSE pipeline. Primers and low quality reads are removed.
