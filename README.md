@@ -5,6 +5,6 @@ Root exudation is pivotal for plants to cope with the changing environment throu
 
 # Overview
 
-**16 S rRNA data analysis consists of various steps which are as follows:
+**16 S rRNA data analysis consists of various steps which are as follows:**
 
 
