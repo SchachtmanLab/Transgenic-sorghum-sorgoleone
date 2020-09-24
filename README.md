@@ -6,7 +6,7 @@ Root exudation is pivotal for plants to cope with the changing environment throu
 
 ## Overview
 
-**16 S rRNA data analysis consists of various steps which are as follows:**
+**16 S rRNA data analysis consists of various steps by using different software or packages which are as follows:**
 
 *Using 2 x 300 bp V4 region from the MiSeq platform as the example*
 
@@ -20,6 +20,13 @@ Root exudation is pivotal for plants to cope with the changing environment throu
 8. beta-diversity analysis (PCoA analysis with Bray-Curtis dissimilarity matrix) using the QIIME's embeded python commands.
 9. Canonical Analysis of Principal coordinates (CAP) analysis. Using the *vegan* package in R and including the PERMONOVA analysis.
 10. Co-occurrence networks analysis. Using the *SparCC* python command lines and *igraph* package in R. 
+
+
+## Steps
+
+1. Quality filteration in USEARCH
+**Note: USEARCH is available online with full instructions (https://www.drive5.com/usearch/).**
+
 
 
 
