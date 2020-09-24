@@ -64,7 +64,7 @@ usearch -fastx_uniques filtered.fa -fastaout uniques.fa -sizeout -relabel Uniq
 usearch -cluster_otus uniques.fa -minsize 2 -otus otus.fa -relabel Otu
 ```
 
-** This step also incorporates the removal of singletons from the clustered OTUs and removal of chimeras from sequencing data **
+**This step also incorporates the removal of singletons from the clustered OTUs and removal of chimeras from sequencing data**
 
 4. Generation of OTU table
 
@@ -81,7 +81,7 @@ usearch -usearch_global stripped.fq -db otus.fa -strand plus -id 0.97 -otutabout
  ```
  assign_taxonomy.py -i otus.fa -m rdp -c 0.80
  ```
-** Note: Install the MacQiime in the laptop if using OSX operating system**
+**Note: Install the MacQiime in the laptop if using OSX operating system**
 
 
 ```
