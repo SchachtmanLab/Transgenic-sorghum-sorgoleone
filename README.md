@@ -22,7 +22,7 @@ Root exudation is pivotal for plants to cope with the changing environment throu
 10. Co-occurrence networks analysis. Using the *SparCC* python command lines and *igraph* package in R. 
 
 
-## Steps
+## Steps and command lines
 
 1. Quality filteration in USEARCH
 
@@ -33,7 +33,7 @@ After demultiplexing, the paired-end reads were merged with error correction usi
 ```
 usearch -fastq_mergepairs *R1*.fastq -relabel @ -fastq_maxdiffs 10 -fastq_minmergelen 230 -fastq_maxmergelen 320 -fastq_pctid 80 -fastqout merged.fq
 ```
-**Note: Note: The parameters are set through referencing the USEARCH instruction manual.**
+**Note: The parameters are set through referencing the USEARCH instruction manual.**
 
 
 Remove the primers from the sequencing data to avoid substitutions in the primer sequences, which may be caused by the PCR reaction. 
@@ -47,7 +47,39 @@ Filter sequencing data to remove the low-quality reads and keep high quality ope
 ```
 usearch -fastq_filter stripped.fq -fastq_maxee 1.0 -fastaout filtered.fa
 ```
-2. 
+
+2. Dereplication to prepare for the OTU table generation
+
+Perform the dereplication to identify the set of unique OTU sequences
+
+```
+usearch -fastx_uniques filtered.fa -fastaout uniques.fa -sizeout -relabel Uniq
+```
+
+3. OTU clustering with 97% threshold
+
+```
+usearch -cluster_otus uniques.fa -minsize 2 -otus otus.fa -relabel Otu
+```
+
+** This step also incorporates the removal of singletons from the clustered OTUs and removal of chimeras from sequencing data **
+
+4. Generation of OTU table
+
+```
+usearch -usearch_global stripped.fq -db otus.fa -strand plus -id 0.97 -otutabout otutable.txt
+```
+
+**This command generates a table with the number of reads (counts) of all OTUs for each sample. The OTU table is used for downstream steps including differential abundance analyses and microbial diversity analyses**
+
+5. Taxonomy assignment
+
+ using the ribosomal database project classifier (RDP) by python command emmbedded in Qiime 
+ 
+ ```
+ assign_taxonomy.py -i otus.fa -m rdp -c 0.80
+ ```
+** Note: Install the MacQiime in the laptop if using OSX operating system**
 
 
 ```
