@@ -21,6 +21,8 @@ Root exudation is pivotal for plants to cope with the changing environment throu
 9. Canonical Analysis of Principal coordinates (CAP) analysis. Using the *vegan* package in R and including the PERMONOVA analysis.
 10. Co-occurrence networks analysis. Using the *SparCC* python command lines and *igraph* package in R. 
 
+
+
 ```
 cd 
 ```
