@@ -25,9 +25,29 @@ Root exudation is pivotal for plants to cope with the changing environment throu
 ## Steps
 
 1. Quality filteration in USEARCH
+
 **Note: USEARCH is available online with full instructions (https://www.drive5.com/usearch/).**
 
+After demultiplexing, the paired-end reads were merged with error correction using USEARCH. The maximum number of mismatches in the alignment was set at 10 base-pairs and minimum percentage of identity in the alignment was set to 80%. 
 
+```
+usearch -fastq_mergepairs *R1*.fastq -relabel @ -fastq_maxdiffs 10 -fastq_minmergelen 230 -fastq_maxmergelen 320 -fastq_pctid 80 -fastqout merged.fq
+```
+**Note: Note: The parameters are set through referencing the USEARCH instruction manual.**
+
+
+Remove the primers from the sequencing data to avoid substitutions in the primer sequences, which may be caused by the PCR reaction. 
+
+```
+usearch -fastx_truncate merge.fq -stripleft 19 -stripright 20 -fastqout stripped.fq
+```
+
+Filter sequencing data to remove the low-quality reads and keep high quality operational taxonomic unit (OTU) sequences.
+
+```
+usearch -fastq_filter stripped.fq -fastq_maxee 1.0 -fastaout filtered.fa
+```
+2. 
 
 
 ```
