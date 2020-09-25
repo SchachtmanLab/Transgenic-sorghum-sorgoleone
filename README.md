@@ -83,6 +83,29 @@ usearch -usearch_global stripped.fq -db otus.fa -strand plus -id 0.97 -otutabout
  ```
 **Note: Install the MacQiime in the laptop if using OSX operating system**
 
+6. Filteration. Removal of plastid and mitochondria in the OTU table. Additionally, OTUs that were not assigned at a Kingdom level RDP classification score of 0.8 were discarded
+
+
+First, merge the RDP assignment information from the last step into the OTU table and make the "biom" format
+
+```
+biom convert -i otutable_rdp.txt -o otu_table_rdp.biom --to-hdf5 --table-type="OTU table" --process-obs-metadata taxonomy
+```
+
+Second, remove the OTUs that were not assigned at a Kingdom level RDP classification, named as "Unclassified"
+
+```
+filter_taxa_from_otu_table.py -i otu_table_rdp.biom -o otu_table_rdp_no_unknow.biom -n Unclassified
+```
+
+Third, filter out the OTUs assigned to chloroplast and mitochondrion in the OTU table
+
+```
+filter_taxa_from_otu_table.py -i otu_table_rdp_no_unknow.biom -o otu_table_rdp_no_unknow_m_c.biom -n f__mitochondria,c__Chloroplast
+```
+
+
+
 
 ```
 cd 
