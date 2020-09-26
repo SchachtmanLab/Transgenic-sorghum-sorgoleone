@@ -86,19 +86,19 @@ usearch -usearch_global stripped.fq -db otus.fa -strand plus -id 0.97 -otutabout
 ### 6. Filteration. Removal of plastid and mitochondria in the OTU table. Additionally, OTUs that were not assigned at a Kingdom level RDP classification score of 0.8 were discarded
 
 
-First, merge the RDP assignment information from the last step into the OTU table and make the "biom" format
+- First, merge the RDP assignment information from the last step into the OTU table and make the "biom" format
 
 ```
 biom convert -i otutable_rdp.txt -o otu_table_rdp.biom --to-hdf5 --table-type="OTU table" --process-obs-metadata taxonomy
 ```
 
-Second, remove the OTUs that were not assigned at a Kingdom level RDP classification, named as "Unclassified"
+- Second, remove the OTUs that were not assigned at a Kingdom level RDP classification, named as "Unclassified"
 
 ```
 filter_taxa_from_otu_table.py -i otu_table_rdp.biom -o otu_table_rdp_no_unknow.biom -n Unclassified
 ```
 
-Third, filter out the OTUs assigned to chloroplast and mitochondrion in the OTU table
+- Third, filter out the OTUs assigned to chloroplast and mitochondrion in the OTU table
 
 ```
 filter_taxa_from_otu_table.py -i otu_table_rdp_no_unknow.biom -o otu_table_rdp_no_unknow_m_c.biom -n f__mitochondria,c__Chloroplast
@@ -107,7 +107,25 @@ filter_taxa_from_otu_table.py -i otu_table_rdp_no_unknow.biom -o otu_table_rdp_n
 ### 7. alpha-diversity analysis
 
 
-- First, Conduct a rarefaction analysis in QIIME v1.9.1
+- First, Conduct a rarefaction analysis in QIIME v1.9.1, to estimate the lowest the sequencing depth that can capture the most different OTUs or richness to reaching the saturation 
+
+```
+biom summarize-table -i otu_table_rdp.biom >  otu_table_rdp.txt
+```
+
+and
+
+```
+single_rarefaction.py -i otu_table.biom -o otu_table_even100.biom -d 100
+```
+
+- Second, all the samples were rarefied to specific reads per sample for alpha-diversity analyses
+
+```
+alpha_rarefaction.py -i otu_table.biom -m Mapping_file.txt -o output_lpha_type_number -p shannon_index.txt -e number -t all_phy_rooted_fasttree_midpoint.tre
+```
+
+### 8. beta-iversity analysis
 
 
 ```
