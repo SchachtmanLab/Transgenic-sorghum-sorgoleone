@@ -29,14 +29,14 @@ Root exudation is pivotal for plants to cope with the changing environment throu
 ### 1. Quality filteration in USEARCH
 
 
-**Note: USEARCH is available online with full instructions (https://www.drive5.com/usearch/).**
+**Note:** USEARCH is available online with full instructions (https://www.drive5.com/usearch/), which is developed by Dr. Robert Edgar
 
 After demultiplexing, the paired-end reads were merged with error correction using USEARCH. The maximum number of mismatches in the alignment was set at 10 base-pairs and minimum percentage of identity in the alignment was set to 80%. 
 
 ```
 usearch -fastq_mergepairs *R1*.fastq -relabel @ -fastq_maxdiffs 10 -fastq_minmergelen 230 -fastq_maxmergelen 320 -fastq_pctid 80 -fastqout merged.fq
 ```
-**Note: The parameters are set through referencing the USEARCH instruction manual.**
+**Note:** The parameters are set through referencing the USEARCH instruction manual.
 
 
 Remove the primers from the sequencing data to avoid substitutions in the primer sequences, which may be caused by the PCR reaction. 
@@ -82,7 +82,7 @@ usearch -usearch_global stripped.fq -db otus.fa -strand plus -id 0.97 -otutabout
  ```
  assign_taxonomy.py -i otus.fa -m rdp -c 0.80
  ```
-**Note: Install the MacQiime in the laptop if using OSX operating system**
+**Note:** Install the MacQiime in the laptop if using OSX operating system
 
 ### 6. Filteration. Removal of plastid and mitochondria in the OTU table. Additionally, OTUs that were not assigned at a Kingdom level RDP classification score of 0.8 were discarded
 
@@ -126,7 +126,7 @@ single_rarefaction.py -i otu_table.biom -o otu_table_even100.biom -d 100
 alpha_rarefaction.py -i otu_table.biom -m Mapping_file.txt -o output_lpha_type_number -p shannon_index.txt -e raref_number -t all_phy_rooted_fasttree_midpoint.tre
 ```
 
-**Note: This analysis calculates diversity indices such as Shannon, Simpson, and Chao1**
+**Note:** This analysis calculates diversity indices such as Shannon, Simpson, and Chao1
 
 
 ### 8. beta-diversity analysis
@@ -137,20 +137,20 @@ beta_diversity_through_plots.py -i otu_table.biom -o bd_type_number -p beta_d.tx
 
 ### 9. Canonical Analysis of Principal coordinates (CAP) analysis
 
-- Conduct canonical analysis of principal coordinates (CAP) analysis using the capscale function by using the *vegan* package
+- Conduct canonical analysis of principal coordinates (CAP) analysis using the capscale function by using the *`vegan`* package
 
 - Permutational multivariate analysis of variance (PERMANOVA). Using the bray-curtis dissimilarity matrix generated in the step 8 to do the PERMANOVA analysis.
 
 - Visulization by using *ggplot2* R package
 
-**Note:** *`please have a check Transgenic_CAP.R`*
+**Note:** *please refer to `Transgenic_CAP.R`* in this github
 
 ### 10. Differential abundance analysis
 
 ```
 differential_abundance.py -i otu_table_rdp_no_m_c_unknow.biom -o otu_table_rdp_no_m_c_unknow.txt -a DESeq2_nbinom -m Map.txt -c Genotype -x WT -y RNAi -d
 ```
-**Note: use the DESeq2 embedded in the Qiime v1.9.1**
+**Note:** use the DESeq2 embedded in the Qiime v1.9.1
 
 ### 11. Co-occurrence networks analysis
 
@@ -159,7 +159,7 @@ differential_abundance.py -i otu_table_rdp_no_m_c_unknow.biom -o otu_table_rdp_n
 ```
 compute_core_microbiome.py -i otu_table.biom -o otu_table_core
 ```
-**Note: core-OTU is defined with more than 70% threshold indicating one OTU need to present in at least 70% samples**
+**Note:** core-OTU is defined with more than 70% threshold indicating one OTU need to present in at least 70% samples
 
 - Second, set up the python2.6.9 environment, which is required to run the SparCC
 
@@ -169,7 +169,7 @@ source activate SparCCEnv
 conda install numpy=1.9.2
 conda install pandas=0.16.2
 ```
-- Third, download the *SparCC_source_code* file, which is developed by Dr. Jonathan Friedman, and check the [website](https://web.mit.edu/almlab/sparcc.html)
+- Third, download the *`SparCC_source_code`* file, which is developed by Dr. Jonathan Friedman, and check the [website](https://web.mit.edu/almlab/sparcc.html) for detail information on how to use it. The dataset in the folder *SparCC_data* can be for test.
 
 - Fourth, navigate into the python code folder and change the mode of the file to make them executable
 
@@ -183,7 +183,7 @@ ls -althr
 
     - construct the correlation matrix: `python SparCC.py ./AUG_WT_all.txt -i 20 --cor_file=./cor_AUG_WT_all.out -a spearman`
     
-    - pseudo p-values were calculated via a bootstrap procedure with at least 100 shuffles(1000 is better depending on the computer processing capacity) to determine the significance of the correlationship
+    - pseudo p-values were calculated via a bootstrap procedure with at least 100 shuffles(1000 is strongly suggested but depending on the computer processing capacity) to determine the significance of the correlationship
     
     ```
     python MakeBootstraps.py ./AUG_WT_all.txt -n 100 -t permutation_#.txt -p ./pvals_WT_all/
@@ -203,9 +203,9 @@ ls -althr
     python ../PseudoPvals.py ../cor_AUG_WT_all.out ./perm_cor_#.txt 100 -o ./pvals.two_sided.txt -t two_sided
     ```
     
-- Sixth, network visualization and ANCOVA stat analysis. Network analysis and visulization are done in R package `igraph`
+- Sixth, network visualization and ANCOVA stat analysis. Network analysis and visulization are done in R package *`igraph`*
 
-**Note:** *`please have a check Transgenic_CAP.R`*
+**Note:** *please refer to `Network.R` and `ANCOVA.R`* in this github. The dataset in the folder *Network_stats_data*  can be download for test.
 
 
 
