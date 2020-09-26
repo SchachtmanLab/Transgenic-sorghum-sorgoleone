@@ -169,7 +169,7 @@ source activate SparCCEnv
 conda install numpy=1.9.2
 conda install pandas=0.16.2
 ```
-- Third, download the *SparCC_source_code* file, which is developed by Dr. Jonathan Friedman, and check the [website](https://web.mit.edu/almlab/sparcc.html)
+- Third, download the *`SparCC_source_code`* file, which is developed by Dr. Jonathan Friedman, and check the [website](https://web.mit.edu/almlab/sparcc.html) for detail information on how to use it
 
 - Fourth, navigate into the python code folder and change the mode of the file to make them executable
 
@@ -183,7 +183,7 @@ ls -althr
 
     - construct the correlation matrix: `python SparCC.py ./AUG_WT_all.txt -i 20 --cor_file=./cor_AUG_WT_all.out -a spearman`
     
-    - pseudo p-values were calculated via a bootstrap procedure with at least 100 shuffles(1000 is better depending on the computer processing capacity) to determine the significance of the correlationship
+    - pseudo p-values were calculated via a bootstrap procedure with at least 100 shuffles(1000 is strongly suggested but depending on the computer processing capacity) to determine the significance of the correlationship
     
     ```
     python MakeBootstraps.py ./AUG_WT_all.txt -n 100 -t permutation_#.txt -p ./pvals_WT_all/
