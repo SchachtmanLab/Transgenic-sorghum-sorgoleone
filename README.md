@@ -182,6 +182,7 @@ ls -althr
 - Fifth, make the correlation matrix by using the SparCC, spearman, pearson. Here we use the spearman as an example and actually are also used in the paper
 
     - construct the correlation matrix: `python SparCC.py ./AUG_WT_all.txt -i 20 --cor_file=./cor_AUG_WT_all.out -a spearman`
+    
     - pseudo p-values were calculated via a bootstrap procedure with at least 100 shuffles to determine the significance of the correlationship
-       -
+  
 
