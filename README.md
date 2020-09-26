@@ -25,7 +25,7 @@ Root exudation is pivotal for plants to cope with the changing environment throu
 ## Steps and command lines
 
 
-1. Quality filteration in USEARCH
+# 1. Quality filteration in USEARCH
 
 
 **Note: USEARCH is available online with full instructions (https://www.drive5.com/usearch/).**
@@ -50,7 +50,7 @@ Filter sequencing data to remove the low-quality reads and keep high quality ope
 usearch -fastq_filter stripped.fq -fastq_maxee 1.0 -fastaout filtered.fa
 ```
 
-2. Dereplication to prepare for the OTU table generation
+# 2. Dereplication to prepare for the OTU table generation
 
 Perform the dereplication to identify the set of unique OTU sequences
 
@@ -58,7 +58,7 @@ Perform the dereplication to identify the set of unique OTU sequences
 usearch -fastx_uniques filtered.fa -fastaout uniques.fa -sizeout -relabel Uniq
 ```
 
-3. OTU clustering with 97% threshold
+# 3. OTU clustering with 97% threshold
 
 ```
 usearch -cluster_otus uniques.fa -minsize 2 -otus otus.fa -relabel Otu
@@ -66,7 +66,7 @@ usearch -cluster_otus uniques.fa -minsize 2 -otus otus.fa -relabel Otu
 
 **This step also incorporates the removal of singletons from the clustered OTUs and removal of chimeras from sequencing data**
 
-4. Generation of OTU table
+# 4. Generation of OTU table
 
 ```
 usearch -usearch_global stripped.fq -db otus.fa -strand plus -id 0.97 -otutabout otutable.txt
@@ -74,7 +74,7 @@ usearch -usearch_global stripped.fq -db otus.fa -strand plus -id 0.97 -otutabout
 
 **This command generates a table with the number of reads (counts) of all OTUs for each sample. The OTU table is used for downstream steps including differential abundance analyses and microbial diversity analyses**
 
-5. Taxonomy assignment
+# 5. Taxonomy assignment
 
  using the ribosomal database project classifier (RDP) by python command emmbedded in Qiime 
  
@@ -83,7 +83,7 @@ usearch -usearch_global stripped.fq -db otus.fa -strand plus -id 0.97 -otutabout
  ```
 **Note: Install the MacQiime in the laptop if using OSX operating system**
 
-6. Filteration. Removal of plastid and mitochondria in the OTU table. Additionally, OTUs that were not assigned at a Kingdom level RDP classification score of 0.8 were discarded
+# 6. Filteration. Removal of plastid and mitochondria in the OTU table. Additionally, OTUs that were not assigned at a Kingdom level RDP classification score of 0.8 were discarded
 
 
 First, merge the RDP assignment information from the last step into the OTU table and make the "biom" format
