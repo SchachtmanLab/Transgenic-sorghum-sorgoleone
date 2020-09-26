@@ -162,6 +162,11 @@ source activate SparCCEnv
 conda install numpy=1.9.2
 conda install pandas=0.16.2
 ```
-- Second, download the *SparCC_source_code* file, which is developed by Dr. Jonathan Friedman, and check the [website](https://web.mit.edu/almlab/sparcc.html):
+- Second, download the *SparCC_source_code* file, which is developed by Dr. Jonathan Friedman, and check the [website](https://web.mit.edu/almlab/sparcc.html)
 
+- Third, navigate into the python code folder and change the mode of the file to make them executable
 
+```
+cd SparCC_source_code
+chmod a+x *.py
+```
