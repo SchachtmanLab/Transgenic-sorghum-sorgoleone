@@ -4,7 +4,7 @@
 ### Introduction
 Root exudation is pivotal for plants to cope with the changing environment through interacting with the soil organisms. 16S rRNA amplicon next generation sequencing (NGS) is a powerful tool to understand how root exudate compound affect the mrobial composition in the root, rhizosphere and soil. Here we show the data analysis method developed by Dr. Peng Wang (wangplant@gmail.com) and Dr. Daniel Schachtman (daniel.schachtman@unl.edu) using different packages in R, combined with Qiime v1.9.1 and USEARCH v10. 
 
-## Overview
+### Overview
 
 **16 S rRNA data analysis consists of various steps by using different software or packages which are as follows:**
 
@@ -23,7 +23,7 @@ Root exudation is pivotal for plants to cope with the changing environment throu
 11. Co-occurrence networks analysis. Using the *SparCC* python command lines and *igraph* package in R. 
 
 
-## Steps and command lines
+### Steps and command lines
 
 
 ### 1. Quality filteration in USEARCH
@@ -154,4 +154,19 @@ differential_abundance.py -i otu_table_rdp_no_m_c_unknow.biom -o otu_table_rdp_n
 
 ### 11. Co-occurrence networks analysis
 
+- First, set up the python2.6.9 environment, which is very important to run the SparCC.
 
+```
+conda create --name SparCCEnv python=2.6.9
+source activate SparCCEnv
+conda install numpy=1.9.2
+conda install pandas=0.16.2
+```
+- Second, download the *SparCC_source_code* file, which is developed by Dr. Jonathan Friedman, and check the [website](https://web.mit.edu/almlab/sparcc.html)
+
+- Third, navigate into the python code folder and change the mode of the file to make them executable
+
+```
+cd SparCC_source_code
+chmod a+x *.py
+```
