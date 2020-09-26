@@ -159,9 +159,9 @@ differential_abundance.py -i otu_table_rdp_no_m_c_unknow.biom -o otu_table_rdp_n
 ```
 compute_core_microbiome.py -i otu_table.biom -o otu_table_core
 ```
-**Note: core-OTU is defined with a at least 70% threshold indicating one OTU need to present in at least 70% samples**
+**Note: core-OTU is defined with more than 70% threshold indicating one OTU need to present in at least 70% samples**
 
-- Second, set up the python2.6.9 environment, which is very important to run the SparCC
+- Second, set up the python2.6.9 environment, which is required to run the SparCC
 
 ```
 conda create --name SparCCEnv python=2.6.9
@@ -179,7 +179,7 @@ chmod a+x *.py
 ls -althr
 ```
 
-- Fifth, make the correlation matrix by using the SparCC, spearman, pearson. Here we use the spearman as an example and actually used in the paper
+- Fifth, make the correlation matrix by using the SparCC, spearman, pearson. Here we use the spearman as an example and actually are also used in the paper
 
     - construct the correlation matrix: `python SparCC.py ./AUG_WT_all.txt -i 20 --cor_file=./cor_AUG_WT_all.out -a spearman`
     - 
