@@ -142,4 +142,4 @@ beta_diversity_through_plots.py -i otu_table.biom -o bd_type_number -p beta_d.tx
 
 - Visulization by using *ggplot2* R package
 
-**Note:** `*see Transgenic_CAP.R*`
+**Note:** *`see Transgenic_CAP.R`*
