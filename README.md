@@ -104,7 +104,10 @@ Third, filter out the OTUs assigned to chloroplast and mitochondrion in the OTU 
 filter_taxa_from_otu_table.py -i otu_table_rdp_no_unknow.biom -o otu_table_rdp_no_unknow_m_c.biom -n f__mitochondria,c__Chloroplast
 ```
 
+### 7. alpha-diversity analysis
 
+
+– First, Conduct a rarefaction analysis in QIIME v1.9.1
 
 
 ```
