@@ -107,7 +107,7 @@ filter_taxa_from_otu_table.py -i otu_table_rdp_no_unknow.biom -o otu_table_rdp_n
 ### 7. alpha-diversity analysis
 
 
-– First, Conduct a rarefaction analysis in QIIME v1.9.1
+–First, Conduct a rarefaction analysis in QIIME v1.9.1
 
 
 ```
