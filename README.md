@@ -122,11 +122,17 @@ single_rarefaction.py -i otu_table.biom -o otu_table_even100.biom -d 100
 - Second, all the samples were rarefied to specific reads per sample for alpha-diversity analyses
 
 ```
-alpha_rarefaction.py -i otu_table.biom -m Mapping_file.txt -o output_lpha_type_number -p shannon_index.txt -e number -t all_phy_rooted_fasttree_midpoint.tre
+alpha_rarefaction.py -i otu_table.biom -m Mapping_file.txt -o output_lpha_type_number -p shannon_index.txt -e raref_number -t all_phy_rooted_fasttree_midpoint.tre
 ```
+
+**Note: This analysis calculates diversity indices such as Shannon, Simpson, and Chao1
+
 
 ### 8. beta-iversity analysis
 
+```
+beta_diversity_through_plots.py -i otu_table.biom -o bd_type_number -p beta_d.txt -m Map.txt -e raref_number -t all_phy_rooted_fasttree_midpoint.tre
+```
 
 ```
 cd 
