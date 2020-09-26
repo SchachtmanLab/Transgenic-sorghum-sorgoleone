@@ -29,7 +29,7 @@ Root exudation is pivotal for plants to cope with the changing environment throu
 ### 1. Quality filteration in USEARCH
 
 
-**Note: USEARCH is available online with full instructions (https://www.drive5.com/usearch/).** developed by Dr. Robert Edgar
+**Note:** USEARCH is available online with full instructions (https://www.drive5.com/usearch/), which is developed by Dr. Robert Edgar
 
 After demultiplexing, the paired-end reads were merged with error correction using USEARCH. The maximum number of mismatches in the alignment was set at 10 base-pairs and minimum percentage of identity in the alignment was set to 80%. 
 
