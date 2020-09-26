@@ -138,12 +138,8 @@ beta_diversity_through_plots.py -i otu_table.biom -o bd_type_number -p beta_d.tx
 
 - Conduct canonical analysis of principal coordinates (CAP) analysis using the capscale function by using the *vegan* package
 
-
-
 - Permutational multivariate analysis of variance (PERMANOVA). Using the bray-curtis dissimilarity matrix generated in the step 8 to do the PERMANOVA analysis.
 
+- Visulization by using *ggplot2* R package
 
-
-```
-cd 
-```
+**Note:** *`see Transgenic_CAP.R`*
