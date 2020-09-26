@@ -29,7 +29,7 @@ Root exudation is pivotal for plants to cope with the changing environment throu
 ### 1. Quality filteration in USEARCH
 
 
-**Note: USEARCH is available online with full instructions (https://www.drive5.com/usearch/).**
+**Note: USEARCH is available online with full instructions (https://www.drive5.com/usearch/).** developed by Dr. Robert Edgar
 
 After demultiplexing, the paired-end reads were merged with error correction using USEARCH. The maximum number of mismatches in the alignment was set at 10 base-pairs and minimum percentage of identity in the alignment was set to 80%. 
 
@@ -143,7 +143,7 @@ beta_diversity_through_plots.py -i otu_table.biom -o bd_type_number -p beta_d.tx
 
 - Visulization by using *ggplot2* R package
 
-**Note:** *please have a check `Transgenic_CAP.R`*
+**Note:** *please refer to `Transgenic_CAP.R`* in this github
 
 ### 10. Differential abundance analysis
 
@@ -205,7 +205,7 @@ ls -althr
     
 - Sixth, network visualization and ANCOVA stat analysis. Network analysis and visulization are done in R package *`igraph`*
 
-**Note:** *please have a check `Network.R` and `ANCOVA.R`*
+**Note:** *please refer to `Network.R` and `ANCOVA.R`* in this github
 
 
 
