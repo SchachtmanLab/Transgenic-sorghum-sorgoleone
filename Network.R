@@ -1,191 +1,25 @@
-setwd("~/Desktop/Transgenic_sorghum/Network/family_rel/AUG_RNAi_core_soil")
-setwd("~/Desktop/Transgenic_sorghum/Network/family_rel/RNAi_all")
-setwd("~/Desktop/Transgenic_sorghum/Network/family_rel/pvals_RNAi_RHZ")
-setwd("~/Desktop/Transgenic_sorghum/Network/family_rel")
-setwd("~/Desktop/Transgenic_sorghum/Network/family_near_soil_Jul_RNAi")
-setwd("~/Desktop/Transgenic_sorghum/Network/family_near_RHZ_Jul_WT")
-setwd("~/Desktop/Transgenic_sorghum/Network/family_near_RHZ_Jul_RNAi")
-setwd("~/Desktop/Havelock_2018/RHZ_2018_corn_analysis/NEW_ANALYSIS_09302019/ALL_ROOT_RHZ/Network/Network_2018_Havelock/core_DIMBOA")
-setwd("~/Desktop/Kaiju_tax/Family_PHYLUM/statistical analysis/only_diff_for_network")
-
-##move the column sequence in the data frame
-moveme <- function (invec, movecommand) {
-  movecommand <- lapply(strsplit(strsplit(movecommand, ";")[[1]], 
-                                 ",|\\s+"), function(x) x[x != ""])
-  movelist <- lapply(movecommand, function(x) {
-    Where <- x[which(x %in% c("before", "after", "first", 
-                              "last")):length(x)]
-    ToMove <- setdiff(x, Where)
-    list(ToMove, Where)
-  })
-  myVec <- invec
-  for (i in seq_along(movelist)) {
-    temp <- setdiff(myVec, movelist[[i]][[1]])
-    A <- movelist[[i]][[2]][1]
-    if (A %in% c("before", "after")) {
-      ba <- movelist[[i]][[2]][2]
-      if (A == "before") {
-        after <- match(ba, temp) - 1
-      }
-      else if (A == "after") {
-        after <- match(ba, temp)
-      }
-    }
-    else if (A == "first") {
-      after <- 0
-    }
-    else if (A == "last") {
-      after <- length(myVec)
-    }
-    myVec <- append(temp, values = movelist[[i]][[1]], after = after)
-  }
-  myVec
-}
-
-
+setwd("~/Desktop/Transgenic_sorghum/Network/AUG_WT_core_soil")
+setwd("~/Desktop/github")
 library(reshape2)
 library(dplyr)
+
+#Data wrangling for the output from the SparCC
+
 d <- read.csv("spear_WT_core_Aug.csv", header=TRUE,row.names=1, sep=",")
 p <- read.csv("pvals.two_sided.csv", header=TRUE,row.names=1, sep=",")
 
-d <- read.csv("cor_family_RNAi_all.csv", header=TRUE,row.names=1, sep=",")
+s=melt(d)
+write.csv(x, file="spear_WT_core_Aug.csv")
+p=melt(p)
+write.csv(x, file="pvals.two_sided.csv")
+
+s <- read.csv("spear_WT_core_Aug.csv", header=TRUE,row.names=1, sep=",")
 p <- read.csv("pvals.two_sided.csv", header=TRUE,row.names=1, sep=",")
-
-d <- read.csv("cor_family_WT_RHZ.csv", header=TRUE,row.names=1, sep=",")
-p <- read.csv("pvals.two_sided.csv", header=TRUE,row.names=1, sep=",")
-
-d <- read.csv("cor_family_RNAi_JUL_soil.out.csv", header=TRUE,row.names=1, sep=",")
-p <- read.csv("pvals.two_sided.csv", header=TRUE,row.names=1, sep=",")
-
-d <- read.csv("otu_wt_aug_soil.csv", header=TRUE,row.names=1, sep=",")
-p <- read.csv("pvals.two_sided.csv", header=TRUE,row.names=1, sep=",")
-
-d <- read.csv("cor_OTU_AUG_RNAi_soil.csv", header=TRUE,row.names=1, sep=",")
-p <- read.csv("pvals.two_sided.csv", header=TRUE,row.names=1, sep=",")
-
-d <- read.csv("cor_OTU_AUG_RNAi_soil.csv", header=TRUE,row.names=1, sep=",")
-p <- read.csv("pvals.two_sided.csv", header=TRUE,row.names=1, sep=",")
-
-d <- read.csv("cor_OTU_JUL_WT_soil.csv", header=TRUE,row.names=1, sep=",")
-p <- read.csv("pvals.two_sided.csv", header=TRUE,row.names=1, sep=",")
-
-d <- read.csv("cor_OTU_JUL_RNAi_soil.csv", header=TRUE,row.names=1, sep=",")
-p <- read.csv("pvals.two_sided.csv", header=TRUE,row.names=1, sep=",")
-
-d <- read.csv("cor_OTU_SEP_WT_soil.csv", header=TRUE,row.names=1, sep=",")
-p <- read.csv("pvals.two_sided.csv", header=TRUE,row.names=1, sep=",")
-
-d <- read.csv("cor_OTU_SEP_RNAi_soil.csv", header=TRUE,row.names=1, sep=",")
-p <- read.csv("pvals.two_sided.csv", header=TRUE,row.names=1, sep=",")
-
-d <- read.csv("cor_OTU_JUL_WT_RHZ.csv", header=TRUE,row.names=1, sep=",")
-p <- read.csv("pvals.two_sided.csv", header=TRUE,row.names=1, sep=",")
-
-d <- read.csv("cor_OTU_JUL_RNAi_RHZ.csv", header=TRUE,row.names=1, sep=",")
-p <- read.csv("pvals.two_sided.csv", header=TRUE,row.names=1, sep=",")
-
-setwd("~/Desktop/Transgenic_sorghum/Network/OTU_network_RHZ/AUG_RHZ_OTU/WT/WT_new")
-setwd("~/Desktop/Havelock_2018/RHZ_2018_corn_analysis/NEW_ANALYSIS_09302019/ALL_ROOT_RHZ/Network/Network_2018_Havelock/core_DIMBOA")
-setwd("~/Desktop/Havelock_2018/RHZ_2018_corn_analysis/NEW_ANALYSIS_09302019/ALL_ROOT_RHZ/Network/Network_2018_Havelock/core_DIMBOA_GABA")
-setwd("~/Desktop/Havelock_2018/RHZ_2018_corn_analysis/NEW_ANALYSIS_09302019/ALL_ROOT_RHZ/Network/Network_2018_Havelock/pvals_Core_DIMBOA_GABA_GO_DEGs")
-setwd("~/Desktop/Havelock_2018/RHZ_2018_corn_analysis/NEW_ANALYSIS_09302019/ALL_ROOT_RHZ/Network/Network_2018_Havelock_2nd/analysis/cor_Core_DIMBOA_absolu")
-setwd("~/Desktop/Havelock_2018/RHZ_2018_corn_analysis/NEW_ANALYSIS_09302019/ALL_ROOT_RHZ/Network/Network_2018_Havelock_2nd/analysis/cor_Core_GABA_absolu")
-setwd("~/Desktop/Havelock_2018/RHZ_2018_corn_analysis/NEW_ANALYSIS_09302019/ALL_ROOT_RHZ/DESEQ2/Network/DIMBOA-network")
-
-#2020MAY#make average for different dataframe (1) need to make the index for each df.
-setwd("~/Desktop/Havelock_2018/RHZ_2018_corn_analysis/NEW_ANALYSIS_09302019/ALL_ROOT_RHZ/DESEQ2/Network/GABA-network/Netowrk_Havelock_GABA")
-setwd("~/Desktop/Havelock_2018/RHZ_2018_corn_analysis/NEW_ANALYSIS_09302019/ALL_ROOT_RHZ/DESEQ2/Network/LOW_GABA_for_DIMBOA")
-setwd("~/Desktop/Havelock_2018/RHZ_2018_corn_analysis/NEW_ANALYSIS_09302019/ALL_ROOT_RHZ/DESEQ2/Network/High_GABA_for_DIMBOA")
-
-d10 <- read.csv("core_table_80_M_GABA_10_ana.csv", header=TRUE,row.names=1, sep=",")
-d37 <- read.csv("core_table_80_M_GABA_37_GABA_ana.csv", header=TRUE,row.names=1, sep=",")
-d109 <- read.csv("core_table_80_M_GABA_109_GABA_ana.csv", header=TRUE,row.names=1, sep=",")
-
-#for low GABA low DIMBOA
-d6 <- read.csv("P006_low_gaba_low_dimboa.csv", header=TRUE,row.names=1, sep=",")
-d84 <- read.csv("P084_low_gaba_low_dimboa.csv", header=TRUE,row.names=1, sep=",")
-
-###DIMBOA_FUNGI_BACTERIA
-
-d <- read.csv("cor_bac_fungi_DIMBOA_family_ana.csv", header=TRUE,row.names=1, sep=",")
-
-
-##make average for different data frames
-library(data.table)
-head(d10[,c(1:14)],10)
-mean_3s=rbindlist(list(d10,d37,d109))[,lapply(.SD,mean), list(OUT_ID)] ## two different column names:Lat Lon
-write.csv(mean_3s, file = "cor_OTU_mean_10_37_109_M_GABA.csv")
-dt = rbindlist(list(d10,d37,d109))
-dt[,print(.SD), list(OUT_ID)]  #Lon, Lat
-
-
-mean_2s=rbindlist(list(d6,d84))[,lapply(.SD,mean), list(OUT_ID)] ## two different column names:Lat Lon
-write.csv(mean_2s, file = "cor_OTU_mean_6_84_LGABA_LDIMBOA.csv")
-dt = rbindlist(list(d10,d37,d109))
-dt[,print(.SD), list(OUT_ID)]  #Lon, Lat
-
-###############################
-
-
-
-d <- read.csv("cor_OTU_AUG_WT_RHZ.csv", header=TRUE,row.names=1, sep=",")
-p <- read.csv("pvals.two_sided.csv", header=TRUE,row.names=1, sep=",")
-
-d <- read.csv("cor_OTU_AUG_RNAi_RHZ.csv", header=TRUE,row.names=1, sep=",")
-p <- read.csv("pvals.two_sided.csv", header=TRUE,row.names=1, sep=",")
-
-d <- read.csv("cor_OTU_SEP_RNAi_RHZ.csv", header=TRUE,row.names=1, sep=",")
-p <- read.csv("pvals.two_sided.csv", header=TRUE,row.names=1, sep=",")
-
-d <- read.csv("cor_core_DIMBOA.csv", header=TRUE,row.names=1, sep=",")
-p <- read.csv("pvals.two_sided.csv", header=TRUE,row.names=1, sep=",")
-
-d <- read.csv("cor_core_DIMBOA_GABA.csv", header=TRUE,row.names=1, sep=",")
-p <- read.csv("pvals.two_sided.csv", header=TRUE,row.names=1, sep=",")
-
-
-d <- read.csv("cor_core_DIMBOA_GABA.csv", header=TRUE,row.names=1, sep=",")
-p <- read.csv("pvals.two_sided.csv", header=TRUE,row.names=1, sep=",")
-
-d <- read.csv("cor_Core_GABA_DIMBOA_DEGs_from_GO.csv", header=TRUE,row.names=1, sep=",")
-p <- read.csv("pvals.two_sided.csv", header=TRUE,row.names=1, sep=",")
-
-d <- read.csv("cor_Core_DIMBOA_absolu.csv", header=TRUE,row.names=1, sep=",")
-p <- read.csv("pvals.two_sided.csv", header=TRUE,row.names=1, sep=",")
-
-d <- read.csv("cor_Core_GABA_abosu.csv", header=TRUE,row.names=1, sep=",")
-p <- read.csv("pvals.two_sided.csv", header=TRUE,row.names=1, sep=",")
-
-#############################
-setwd("~/Desktop/Havelock_2018/RHZ_2018_corn_analysis/NEW_ANALYSIS_09302019/ALL_ROOT_RHZ/DESEQ2/Network/pvals_Medium_DIMBOA_Root")
-setwd("~/Desktop/Havelock_2018/RHZ_2018_corn_analysis/NEW_NEW_ANALYSIS_07312020/Sfigure10/Network/pvals_Medium_DIMBOA_Root")
-setwd("~/Desktop/Havelock_2018/RHZ_2018_corn_analysis/NEW_NEW_ANALYSIS_07312020/Sfigure10/Network/pvals_Low_DIMBOA_Root")
-setwd("~/Desktop/Havelock_2018/RHZ_2018_corn_analysis/NEW_NEW_ANALYSIS_07312020/Sfigure10/Network/pvals_High_GABA_ROOT")
-setwd("~/Desktop/Havelock_2018/RHZ_2018_corn_analysis/NEW_NEW_ANALYSIS_07312020/Sfigure10/Network/pvals_Medium_GABA_Root")
-setwd("~/Desktop/Havelock_2018/RHZ_2018_corn_analysis/NEW_NEW_ANALYSIS_07312020/Sfigure10/Network/pvals_low_GABA_root")
-setwd("~/Desktop/Havelock_2018/RHZ_2018_corn_analysis/NEW_NEW_ANALYSIS_07312020/Sfigure10/Network/Hi_DIMBOA_rhz")
-setwd("~/Desktop/Havelock_2018/RHZ_2018_corn_analysis/NEW_NEW_ANALYSIS_07312020/Sfigure10/Network/Medium_DIMBOA_rhz")
-setwd("~/Desktop/Havelock_2018/RHZ_2018_corn_analysis/NEW_NEW_ANALYSIS_07312020/Sfigure10/Network/Low_DIMBOA_rhz")
-setwd("~/Desktop/Havelock_2018/RHZ_2018_corn_analysis/NEW_NEW_ANALYSIS_07312020/Sfigure10/Network/Low_GABA_rhz")
-setwd("~/Desktop/Havelock_2018/RHZ_2018_corn_analysis/NEW_NEW_ANALYSIS_07312020/Sfigure10/Network/Hi_GABA_rhz")
-setwd("~/Desktop/Havelock_2018/RHZ_2018_corn_analysis/NEW_NEW_ANALYSIS_07312020/Sfigure10/Network/Medium_GABA_rhz")
-library(reshape2)
-#2018Havelock reanalysis
-d <- read.delim("core_Medium_GABA.txt")
-#d <- read.csv("High_DIMBOA_Root.csv", header=TRUE,row.names=1, sep=",")
-#p <- read.csv("pvals.two_sided.csv", header=TRUE,row.names=1, sep=",")
-p <- read.delim("pvals.two_sided.txt")
-x=melt(p)
-write.csv(x, file="pvals.two_sided_1.csv")
-
-x=melt(d)
-write.csv(x, file="High_DIMBOA_Root_1.csv")
-
-s <- read.csv("High_DIMBOA_Root_1.csv", header=TRUE,row.names=1, sep=",")
-p <- read.csv("pvals.two_sided_1.csv", header=TRUE,row.names=1, sep=",")
 
 #sp1 <- cbind(s,p, by=c("variable"))
 sp1 <- cbind(s,p, by=c("OTU.ID"))
+
+
 colnames(sp1)=c("tax1","tax2","r","id1","id2","p","by")
 sp1 <- sp1 %>%  
   select("tax1","tax2","r","p")
