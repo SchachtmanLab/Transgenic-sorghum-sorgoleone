@@ -137,7 +137,7 @@ beta_diversity_through_plots.py -i otu_table.biom -o bd_type_number -p beta_d.tx
 
 ### 9. Canonical Analysis of Principal coordinates (CAP) analysis
 
-- Conduct canonical analysis of principal coordinates (CAP) analysis using the capscale function by using the *vegan* package
+- Conduct canonical analysis of principal coordinates (CAP) analysis using the capscale function by using the *`vegan`* package
 
 - Permutational multivariate analysis of variance (PERMANOVA). Using the bray-curtis dissimilarity matrix generated in the step 8 to do the PERMANOVA analysis.
 
@@ -203,7 +203,7 @@ ls -althr
     python ../PseudoPvals.py ../cor_AUG_WT_all.out ./perm_cor_#.txt 100 -o ./pvals.two_sided.txt -t two_sided
     ```
     
-- Sixth, network visualization and ANCOVA stat analysis. Network analysis and visulization are done in R package `igraph`
+- Sixth, network visualization and ANCOVA stat analysis. Network analysis and visulization are done in R package *`igraph`*
 
 **Note:** *please have a check `Network.R` and `ANCOVA.R`*
 
