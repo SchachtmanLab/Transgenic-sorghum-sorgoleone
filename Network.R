@@ -1,5 +1,4 @@
 setwd("/Users/peng/Desktop/github")
-setwd("~/Desktop/github")
 library(reshape2)
 library(dplyr)
 ##############################################
