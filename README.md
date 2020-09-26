@@ -154,4 +154,14 @@ differential_abundance.py -i otu_table_rdp_no_m_c_unknow.biom -o otu_table_rdp_n
 
 ### 11. Co-occurrence networks analysis
 
+- First, set up the python2.6.9 environment, which is very important to run the SparCC.
+
+```
+conda create --name SparCCEnv python=2.6.9
+source activate SparCCEnv
+conda install numpy=1.9.2
+conda install pandas=0.16.2
+```
+- Second, download the *SparCC_source_code* file, which is developed by Dr. Jonathan Friedman, and check the [website](https://web.mit.edu/almlab/sparcc.html):
+
 
