@@ -200,8 +200,16 @@ ls -althr
     
     calculate the two tailed p-value 
     ```
-    python ../PseudoPvals.py ../cor_family_WT_all.out ./perm_cor_#.txt 100 -o ./pvals.two_sided.txt -t two_sided
+    python ../PseudoPvals.py ../cor_AUG_WT_all.out ./perm_cor_#.txt 100 -o ./pvals.two_sided.txt -t two_sided
     ```
     
+- Sixth, network visualization and ANCOVA stat analysis. Network analysis and visulization are done in R package `igraph`
+
+**Note:** *`please have a check Transgenic_CAP.R`*
+
+
+
+
+
   
 
