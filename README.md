@@ -19,7 +19,8 @@ Root exudation is pivotal for plants to cope with the changing environment throu
 7. alpha-diversity analysis using the QIIME's embeded python commands.
 8. beta-diversity analysis (PCoA analysis with Bray-Curtis dissimilarity matrix) using the QIIME's embeded python commands.
 9. Canonical Analysis of Principal coordinates (CAP) analysis. Using the *vegan* package in R and including the PERMONOVA analysis.
-10. Co-occurrence networks analysis. Using the *SparCC* python command lines and *igraph* package in R. 
+10. Differential abundance analysis between wild type and RNAi lines
+11. Co-occurrence networks analysis. Using the *SparCC* python command lines and *igraph* package in R. 
 
 
 ## Steps and command lines
@@ -142,4 +143,15 @@ beta_diversity_through_plots.py -i otu_table.biom -o bd_type_number -p beta_d.tx
 
 - Visulization by using *ggplot2* R package
 
-**Note:** *`see Transgenic_CAP.R`*
+**Note:** *`please have a check Transgenic_CAP.R`*
+
+### 10. Differential abundance analysis
+
+```
+differential_abundance.py -i otu_table_rdp_no_m_c_unknow.biom -o otu_table_rdp_no_m_c_unknow.txt -a DESeq2_nbinom -m Map.txt -c Genotype -x WT -y RNAi -d
+```
+**Note: use the DESeq2 embedded in the Qiime v1.9.1
+
+### 11. Co-occurrence networks analysis
+
+
