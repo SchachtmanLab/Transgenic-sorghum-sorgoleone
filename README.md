@@ -150,11 +150,18 @@ beta_diversity_through_plots.py -i otu_table.biom -o bd_type_number -p beta_d.tx
 ```
 differential_abundance.py -i otu_table_rdp_no_m_c_unknow.biom -o otu_table_rdp_no_m_c_unknow.txt -a DESeq2_nbinom -m Map.txt -c Genotype -x WT -y RNAi -d
 ```
-**Note: use the DESeq2 embedded in the Qiime v1.9.1
+**Note: use the DESeq2 embedded in the Qiime v1.9.1**
 
 ### 11. Co-occurrence networks analysis
 
-- First, set up the python2.6.9 environment, which is very important to run the SparCC.
+- First, calculate the core OTU matrix in QIIME that can be used for following step
+
+```
+compute_core_microbiome.py -i otu_table.biom -o otu_table_core
+```
+**Note: core-OTU is defined with a at least 70% threshold indicating one OTU need to present in at least 70% samples**
+
+- Second, set up the python2.6.9 environment, which is very important to run the SparCC
 
 ```
 conda create --name SparCCEnv python=2.6.9
@@ -162,11 +169,18 @@ source activate SparCCEnv
 conda install numpy=1.9.2
 conda install pandas=0.16.2
 ```
-- Second, download the *SparCC_source_code* file, which is developed by Dr. Jonathan Friedman, and check the [website](https://web.mit.edu/almlab/sparcc.html)
+- Third, download the *SparCC_source_code* file, which is developed by Dr. Jonathan Friedman, and check the [website](https://web.mit.edu/almlab/sparcc.html)
 
-- Third, navigate into the python code folder and change the mode of the file to make them executable
+- Fourth, navigate into the python code folder and change the mode of the file to make them executable
 
 ```
 cd SparCC_source_code
 chmod a+x *.py
+ls -althr
 ```
+
+- Fifth, make the correlation matrix by using the SparCC, spearman, pearson. Here we use the spearman as an example and actually used in the paper
+
+    - construct the correlation matrix: `python SparCC.py ./AUG_WT_all.txt -i 20 --cor_file=./cor_AUG_WT_all.out -a spearman`
+    - 
+
