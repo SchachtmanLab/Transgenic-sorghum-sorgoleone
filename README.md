@@ -183,6 +183,25 @@ ls -althr
 
     - construct the correlation matrix: `python SparCC.py ./AUG_WT_all.txt -i 20 --cor_file=./cor_AUG_WT_all.out -a spearman`
     
-    - pseudo p-values were calculated via a bootstrap procedure with at least 100 shuffles to determine the significance of the correlationship
+    - pseudo p-values were calculated via a bootstrap procedure with at least 100 shuffles(1000 is better depending on the computer processing capacity) to determine the significance of the correlationship
+    
+    ```
+    python MakeBootstraps.py ./AUG_WT_all.txt -n 100 -t permutation_#.txt -p ./pvals_WT_all/
+    ```
+    
+    ```
+    cd pvals_WT_all
+    ```
+    
+    here is a loop for process all the data generated from last step
+    ```
+    for fq in permutation_*.txt; do python ../SparCC.py ./$fq -i 5 --cor_file=./perm_cor_$fq; done
+    ```
+    
+    calculate the two tailed p-value 
+    ```
+    python ../PseudoPvals.py ../cor_family_WT_all.out ./perm_cor_#.txt 100 -o ./pvals.two_sided.txt -t two_sided
+    ```
+    
   
 
