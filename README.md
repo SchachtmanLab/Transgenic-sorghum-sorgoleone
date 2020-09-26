@@ -125,7 +125,7 @@ single_rarefaction.py -i otu_table.biom -o otu_table_even100.biom -d 100
 alpha_rarefaction.py -i otu_table.biom -m Mapping_file.txt -o output_lpha_type_number -p shannon_index.txt -e raref_number -t all_phy_rooted_fasttree_midpoint.tre
 ```
 
-**Note: This analysis calculates diversity indices such as Shannon, Simpson, and Chao1
+**Note: This analysis calculates diversity indices such as Shannon, Simpson, and Chao1**
 
 
 ### 8. beta-iversity analysis
