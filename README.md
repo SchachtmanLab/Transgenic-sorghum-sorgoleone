@@ -134,6 +134,16 @@ alpha_rarefaction.py -i otu_table.biom -m Mapping_file.txt -o output_lpha_type_n
 beta_diversity_through_plots.py -i otu_table.biom -o bd_type_number -p beta_d.txt -m Map.txt -e raref_number -t all_phy_rooted_fasttree_midpoint.tre
 ```
 
+### 9. Canonical Analysis of Principal coordinates (CAP) analysis
+
+- Conduct canonical analysis of principal coordinates (CAP) analysis using the capscale function by using the *vegan* package
+
+
+
+- Permutational multivariate analysis of variance (PERMANOVA). Using the bray-curtis dissimilarity matrix generated in the step 8 to do the PERMANOVA analysis.
+
+
+
 ```
 cd 
 ```
