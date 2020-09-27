@@ -65,7 +65,7 @@ usearch -fastx_uniques filtered.fa -fastaout uniques.fa -sizeout -relabel Uniq
 usearch -cluster_otus uniques.fa -minsize 2 -otus otus.fa -relabel Otu
 ```
 
-**This step also incorporates the removal of singletons from the clustered OTUs and removal of chimeras from sequencing data**
+**Note:** This step also incorporates the removal of singletons from the clustered OTUs and removal of chimeras from sequencing data
 
 ### 4. Generation of OTU table
 
@@ -73,7 +73,7 @@ usearch -cluster_otus uniques.fa -minsize 2 -otus otus.fa -relabel Otu
 usearch -usearch_global stripped.fq -db otus.fa -strand plus -id 0.97 -otutabout otutable.txt
 ```
 
-**This command generates a table with the number of reads (counts) of all OTUs for each sample. The OTU table is used for downstream steps including differential abundance analyses and microbial diversity analyses**
+**Note:** This command generates a table with the number of reads (counts) of all OTUs for each sample. The OTU table is used for downstream steps including differential abundance analyses and microbial diversity analyses
 
 ### 5. Taxonomy assignment
 
