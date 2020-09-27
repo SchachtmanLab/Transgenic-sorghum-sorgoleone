@@ -212,14 +212,14 @@ ls -althr
 
 
 
-**Example**: 2D network graph for the rhizosphere of wild type of transgenic sorghum in August
+**Example**: 2D network graph for the rhizosphere core OTUs of wild type of transgenic sorghum in August
 
 ![Image of WT](https://github.com/SchachtmanLab/Transgenic-sorghum-sorgoleone/blob/master/2D_network.png)
 
 
 
 
-**Example**: 3D network graph for the rhizosphere of wild type of transgenic sorghum in August
+**Example**: 3D network graph for the rhizosphere core OTUs of wild type of transgenic sorghum in August
 
 ![Image of WT](https://github.com/SchachtmanLab/Transgenic-sorghum-sorgoleone/blob/master/3D_network.png)
 
