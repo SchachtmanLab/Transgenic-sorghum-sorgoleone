@@ -208,11 +208,14 @@ ls -althr
 **Note:** *please refer to `Network.R` and `ANCOVA.R`* in this github. The dataset in the folder *Network_stats_data*  can be download for test.
 
 
-**Example**: 2D network graph for the wild type of transgenic sorghum in August
+
+**Example**: 2D network graph for the rhizosphere of wild type of transgenic sorghum in August
 
 ![Image of WT](https://github.com/SchachtmanLab/Transgenic-sorghum-sorgoleone/blob/master/2D_network.png)
 
-**Example**: 3D network graph for the wild type of transgenic sorghum in August
+
+
+**Example**: 3D network graph for the rhizosphere of wild type of transgenic sorghum in August
 
 ![Image of WT](https://github.com/SchachtmanLab/Transgenic-sorghum-sorgoleone/blob/master/3D_network.png)
 
