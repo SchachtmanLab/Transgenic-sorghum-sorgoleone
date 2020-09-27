@@ -207,9 +207,9 @@ ls -althr
 
 **Note:** *please refer to `Network.R` and `ANCOVA.R`* in this github. The dataset in the folder *Network_stats_data*  can be download for test.
 
-```
+
 ![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
-```
+
 
 
 
