@@ -205,13 +205,17 @@ ls -althr
     
 - Sixth, network visualization and ANCOVA stat analysis. Network analysis and visulization are done in R package *`igraph`*
 
-**Note:** *please refer to `Network.R` and `ANCOVA.R`* in this github. The dataset in the folder *Network_stats_data*  can be download for test.
+**Note:** *please refer to `Network.R` and `ANCOVA.R`* in this github. The dataset in the folder *Network_stats_data*  can be download for the test to make graph.
+
+
+
 
 
 
 **Example**: 2D network graph for the rhizosphere of wild type of transgenic sorghum in August
 
 ![Image of WT](https://github.com/SchachtmanLab/Transgenic-sorghum-sorgoleone/blob/master/2D_network.png)
+
 
 
 
