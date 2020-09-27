@@ -208,7 +208,7 @@ ls -althr
 **Note:** *please refer to `Network.R` and `ANCOVA.R`* in this github. The dataset in the folder *Network_stats_data*  can be download for test.
 
 ```
-![](image.jpg)
+![](https://github.com/SchachtmanLab/Transgenic-sorghum-sorgoleone/blob/master/2D_network.png)
 ```
 
 
