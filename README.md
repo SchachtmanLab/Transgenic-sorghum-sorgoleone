@@ -101,7 +101,7 @@ qiime feature-classifier classify-sklearn --i-classifier classifier.qza --i-read
 
 qiime metadata tabulate --m-input-file taxonomy.qza --o-visualization taxonomy.qzv
 ```
-**Note:** Greengenes 13_8 99% OTUs (reference sequences clustered at 99% sequence similarity) and its corresponding 99% taxonomy information are required to use at the same time. [here is the link](https://docs.qiime2.org/2020.8/tutorials/feature-classifier/) with the title *Obtaining and importing reference data sets*
+**Note:** Greengenes 13_8 99% OTUs (reference sequences clustered at 99% sequence similarity) and its corresponding 99% taxonomy information are required to use at the same time. Please check the [link](https://docs.qiime2.org/2020.8/tutorials/feature-classifier/) with the title "*Obtaining and importing reference data sets*" for the detailed information
 
 
 ### 6. Filteration. Removal of plastid and mitochondria in the OTU table. Additionally, OTUs that were not assigned at a Kingdom level RDP classification score of 0.8 were discarded
