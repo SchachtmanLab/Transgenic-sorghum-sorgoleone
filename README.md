@@ -14,7 +14,7 @@ Root exudation is pivotal for plants to cope with the changing environment throu
 2. Dereplication in USEARCH. To find the unique sequences and create the input sequences of the 97% OTU clustering.
 3. OTU clustering in USEARCH. 97% identity was used as the threshold.
 4. Generation of OTU table in USEARCH.
-5. Taxonomy assignment. Using the Ribosomal Database Project classifier (RDP) in QIIME's embeded python commands.
+5. Taxonomy assignment.
 6. Removal of plastid and mitochondria in the OTU table by using the QIIME's embeded python commands.
 7. alpha-diversity analysis using the QIIME's embeded python commands.
 8. beta-diversity analysis (PCoA analysis with Bray-Curtis dissimilarity matrix) using the QIIME's embeded python commands.
@@ -77,12 +77,32 @@ usearch -usearch_global stripped.fq -db otus.fa -strand plus -id 0.97 -otutabout
 
 ### 5. Taxonomy assignment
 
- using the ribosomal database project classifier (RDP) by python command emmbedded in Qiime 
+- using the ribosomal database project classifier (RDP) by python command emmbedded in QIIME v1.9.1
  
  ```
  assign_taxonomy.py -i otus.fa -m rdp -c 0.80
  ```
 **Note:** Install the MacQiime in the laptop if using OSX operating system
+
+- using a pre-trained Naive Bayes classifier and the q2-feature-classifier plugin in QIIME v2 (recommended) [here is the link] (https://docs.qiime2.org/2020.8/tutorials/feature-classifier/)
+
+```
+qiime tools import --type 'FeatureData[Sequence]' --input-path 99_otus.fasta --output-path 99_otus.qza
+
+qiime tools import --type 'FeatureData[Taxonomy]' --input-format HeaderlessTSVTaxonomyFormat --input-path 99_otu_taxonomy.txt --output-path ref-taxonomy.qza
+
+qiime feature-classifier extract-reads --i-sequences 99_otus.qza --p-trunc-len 250 --p-min-length 100 --p-max-length 400 --o-reads ref-seqs.qza --p-f-primer GTGCCAGCMGCCGCGGTAA --p-r-primer GGACTACHVGGGTWTCTAAT
+
+qiime feature-classifier fit-classifier-naive-bayes --i-reference-reads ref-seqs.qza --i-reference-taxonomy ref-taxonomy.qza --o-classifier classifier.qza
+
+qiime tools import --type 'FeatureData[Sequence]' --input-path ./new_otu_fa/otus.fa --output-path otus.qza
+
+qiime feature-classifier classify-sklearn --i-classifier classifier.qza --i-reads otus.qza --o-classification taxonomy.qza
+
+qiime metadata tabulate --m-input-file taxonomy.qza --o-visualization taxonomy.qzv
+```
+**Note:** Greengenes 13_8 99% OTUs (reference sequences clustered at 99% sequence similarity) and its corresponding 99% taxonomy information are required to use at the same time. [here is the link] (https://docs.qiime2.org/2020.8/tutorials/feature-classifier/) with the title *Obtaining and importing reference data sets*
+
 
 ### 6. Filteration. Removal of plastid and mitochondria in the OTU table. Additionally, OTUs that were not assigned at a Kingdom level RDP classification score of 0.8 were discarded
 
