@@ -161,7 +161,7 @@ beta_diversity_through_plots.py -i otu_table.biom -o bd_type_number -p beta_d.tx
 
 - Permutational multivariate analysis of variance (PERMANOVA). Using the bray-curtis dissimilarity matrix generated in the step 8 to do the PERMANOVA analysis.
 
-- Visulization by using *ggplot2* R package
+- Visulization by using *`ggplot2`* R package
 
 **Note:** *please refer to `Transgenic_CAP.R`* in this github
 
@@ -239,7 +239,7 @@ ls -althr
 
 
 
-**Example**: 3D network graph for the rhizosphere core OTUs of wild type of transgenic sorghum in August
+**Example**: 3D network graph for the rhizosphere core OTUs of wild type of transgenic sorghum in August, you can hold the graph and turn to see ot with different angles
 
 ![Image of WT](https://github.com/SchachtmanLab/Transgenic-sorghum-sorgoleone/blob/master/3D_network.png)
 
