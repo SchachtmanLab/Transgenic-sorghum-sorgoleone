@@ -87,7 +87,7 @@ usearch -usearch_global stripped.fq -db otus.fa -strand plus -id 0.97 -otutabout
 - using a pre-trained Naive Bayes classifier and the q2-feature-classifier plugin in QIIME v2 (recommended) [here is the link](https://docs.qiime2.org/2020.8/tutorials/feature-classifier/)
 
 ```
-qiime tools import --type 'FeatureData[Sequence]' --input-path 99_otus.fasta --output-path 97_otus.qza
+qiime tools import --type 'FeatureData[Sequence]' --input-path 97_otus.fasta --output-path 97_otus.qza
 
 qiime tools import --type 'FeatureData[Taxonomy]' --input-format HeaderlessTSVTaxonomyFormat --input-path 97_otu_taxonomy.txt --output-path ref-taxonomy.qza
 
