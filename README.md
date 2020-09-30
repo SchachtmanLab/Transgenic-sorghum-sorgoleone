@@ -86,11 +86,13 @@ usearch -usearch_global stripped.fq -db otus.fa -strand plus -id 0.97 -otutabout
 
 - using a pre-trained Naive Bayes classifier and the q2-feature-classifier plugin in QIIME v2 (recommended) [here is the link](https://docs.qiime2.org/2020.8/tutorials/feature-classifier/). To install the QIIME v2, [here is the link](https://docs.qiime2.org/2020.8/install/native/#install-qiime-2-within-a-conda-environment). *`conda install`* is recommended for MAC OSX.
 
-To run the command in the QIIMEv2 environment
+To run the command in the QIIME v2 environment
 
 ```
 conda activate qiime2-2020.8
 ```
+
+To train the classifer and do the taxonomical assignment
 
 ```
 qiime tools import --type 'FeatureData[Sequence]' --input-path 97_otus.fasta --output-path 97_otus.qza
