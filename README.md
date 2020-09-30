@@ -243,7 +243,7 @@ ls -althr
 
 
 
-**Example**: 3D network graph using the "rglplot" function in *`igraph`* R package for the rhizosphere core OTUs of wild type of transgenic sorghum in August, you can hold the graph and turn to see ot with different angles
+**Example**: 3D network graph using the "rglplot" function in *`igraph`* R package for the rhizosphere core OTUs of wild type in August. You can hold the graph and turn to see it with different angles using rglplot
 
 ![Image of WT](https://github.com/SchachtmanLab/Transgenic-sorghum-sorgoleone/blob/master/3D_network.png)
 
