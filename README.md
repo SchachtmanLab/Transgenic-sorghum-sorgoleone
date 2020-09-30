@@ -87,11 +87,11 @@ usearch -usearch_global stripped.fq -db otus.fa -strand plus -id 0.97 -otutabout
 - using a pre-trained Naive Bayes classifier and the q2-feature-classifier plugin in QIIME v2 (recommended) [here is the link](https://docs.qiime2.org/2020.8/tutorials/feature-classifier/)
 
 ```
-qiime tools import --type 'FeatureData[Sequence]' --input-path 99_otus.fasta --output-path 99_otus.qza
+qiime tools import --type 'FeatureData[Sequence]' --input-path 99_otus.fasta --output-path 97_otus.qza
 
-qiime tools import --type 'FeatureData[Taxonomy]' --input-format HeaderlessTSVTaxonomyFormat --input-path 99_otu_taxonomy.txt --output-path ref-taxonomy.qza
+qiime tools import --type 'FeatureData[Taxonomy]' --input-format HeaderlessTSVTaxonomyFormat --input-path 97_otu_taxonomy.txt --output-path ref-taxonomy.qza
 
-qiime feature-classifier extract-reads --i-sequences 99_otus.qza --p-trunc-len 250 --p-min-length 100 --p-max-length 400 --o-reads ref-seqs.qza --p-f-primer GTGCCAGCMGCCGCGGTAA --p-r-primer GGACTACHVGGGTWTCTAAT
+qiime feature-classifier extract-reads --i-sequences 97_otus.qza --p-trunc-len 250 --p-min-length 100 --p-max-length 400 --o-reads ref-seqs.qza --p-f-primer GTGCCAGCMGCCGCGGTAA --p-r-primer GGACTACHVGGGTWTCTAAT
 
 qiime feature-classifier fit-classifier-naive-bayes --i-reference-reads ref-seqs.qza --i-reference-taxonomy ref-taxonomy.qza --o-classifier classifier.qza
 
@@ -101,7 +101,7 @@ qiime feature-classifier classify-sklearn --i-classifier classifier.qza --i-read
 
 qiime metadata tabulate --m-input-file taxonomy.qza --o-visualization taxonomy.qzv
 ```
-**Note:** Greengenes 13_8 99% OTUs (reference sequences clustered at 99% sequence similarity) and its corresponding 99% taxonomy information are required to use at the same time. Please check the [link](https://docs.qiime2.org/2020.8/tutorials/feature-classifier/) with the title "*Obtaining and importing reference data sets*" for the detailed information
+**Note:** Greengenes 13_8 97% OTUs (reference sequences clustered at 97% sequence similarity) and its corresponding 97% taxonomy information are required to use at the same time. Please check the [link](https://docs.qiime2.org/2020.8/tutorials/feature-classifier/) with the title "*Obtaining and importing reference data sets*" for the detailed information
 
 
 ### 6. Filteration. Removal of plastid and mitochondria in the OTU table. Additionally, OTUs that were not assigned at a Kingdom level RDP classification score of 0.8 were discarded
