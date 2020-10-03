@@ -70,7 +70,7 @@ usearch -cluster_otus uniques.fa -minsize 2 -otus otus.fa -relabel Otu
 ### 4. Generation of OTU table
 
 ```
-usearch -usearch_global stripped.fq -db otus.fa -strand plus -id 0.97 -otutabout otutable.txt
+usearch -otutab stripped.fq -otus otus.fa -otutabout otutab.txt -mapout map.txt
 ```
 
 **Note:** This command generates a table with the number of reads (counts) of all OTUs for each sample. The OTU table is used for downstream steps including differential abundance analyses and microbial diversity analyses
