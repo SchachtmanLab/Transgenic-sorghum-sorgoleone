@@ -1,4 +1,4 @@
-# SchachtmanLab NGS data analysis method
+# NGS data analysis method
 
 ## Data analysis method of 16 S rRNA amplicon
 ### Introduction
